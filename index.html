@@ -5,18 +5,46 @@
   <title>Will B Framed - Starter Website</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
+    /* Reset default body margin and set font */
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background: #f6f8fa;
       color: #222;
     }
+
+    /* Banner styling: dark background, centered content */
     .banner {
       background: #222;
       color: #fff;
-      padding: 40px 0 20px 0;
+      padding: 0; /* Remove padding for image to fit flush */
       text-align: center;
+      position: relative;
     }
+
+    /* Banner image styling: full width, fixed height, object-fit for cropping */
+    .banner-img {
+      width: 100%;
+      max-height: 220px;
+      object-fit: cover; /* Ensures the image covers the area */
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Banner heading styling: overlays image, positioned absolutely */
+    .banner-title {
+      position: absolute;
+      top: 30px;
+      left: 0;
+      width: 100%;
+      color: #fff;
+      font-size: 2.5em;
+      letter-spacing: 2px;
+      text-shadow: 1px 2px 8px rgba(0,0,0,0.6); /* Adds shadow for readability on image */
+      pointer-events: none; /* Allows image to be clickable if needed */
+    }
+
+    /* Main content container styling */
     .container {
       max-width: 700px;
       margin: 40px auto 0 auto;
@@ -25,15 +53,14 @@
       box-shadow: 0 4px 16px rgba(0,0,0,0.07);
       border-radius: 8px;
     }
-    h1 {
-      margin: 0;
-      font-size: 2.5em;
-      letter-spacing: 2px;
-    }
+
+    /* Intro section styling */
     .intro {
       font-size: 1.2em;
       margin: 20px 0 10px 0;
     }
+
+    /* Description section styling */
     .description {
       font-size: 1em;
       color: #555;
@@ -42,15 +69,28 @@
   </style>
 </head>
 <body>
+  <!-- Banner at the top of the page -->
   <div class="banner">
-    <h1>Welcome to Will B Framed!</h1>
+    <!-- 
+      To display your banner image:
+      - Upload an image named 'banner.jpg', 'banner.png', or similar to the same folder as this HTML file.
+      - Change the src below to match the file name you uploaded.
+      - Example: <img src="banner.jpg" alt="Banner" class="banner-img">
+    -->
+    <img src="banner.jpg" alt="Banner" class="banner-img">
+    <!-- Banner title overlays the banner image -->
+    <div class="banner-title">Welcome to Will B Framed!</div>
   </div>
+
+  <!-- Main site content -->
   <div class="container">
+    <!-- Intro section -->
     <div class="intro">
       Hi there! This is a simple starter website to help you get going.
     </div>
+    <!-- Description section -->
     <div class="description">
-      This site includes a clean banner at the top, a short introduction, and a brief description. 
+      This site includes a clean banner at the top, a short introduction, and a brief description.<br>
       You can expand on this by adding more sections, customizing the colors, fonts, and layout, or adding images and interactive elements.<br><br>
       Enjoy building your project!
     </div>
