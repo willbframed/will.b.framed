@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,12 @@
     <!-- Makes the site responsive on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Title that appears in browser tab -->
-    <title>Will.B.Framed</title>
+    <title>Photography Portfolio</title>
+    
+    <!-- FAVICON - Logo that appears in browser tab -->
+    <!-- Upload your logo.png to the images folder and this will display it -->
+    <link rel="icon" type="image/png" href="images/logo.png">
+
     <style>
         /* RESET STYLES - Removes default browser spacing and ensures consistent box sizing */
         * {
@@ -36,11 +42,21 @@
             background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%); /* Fades from dark to transparent */
         }
 
-        /* Logo/Name on the left side of navigation */
+	/* Logo/Name on the left side of navigation */
         .logo {
             font-size: 1.5rem;
             font-weight: 300; /* Thin font weight */
             letter-spacing: 3px; /* Space between letters for elegance */
+            display: flex; /* Allows logo image and text to align */
+            align-items: center; /* Centers logo vertically */
+            gap: 1rem; /* Space between logo image and text */
+        }
+
+        /* Logo image styling */
+        .logo img {
+            height: 40px; /* Adjust this number to make logo bigger/smaller */
+            width: auto; /* Maintains aspect ratio */
+            filter: brightness(0) invert(1); /* Makes logo white (remove this line if you want original colors) */
         }
 
         /* Container for navigation links */
@@ -328,8 +344,14 @@
 <body>
     <!-- NAVIGATION BAR - Fixed at top of page -->
     <nav>
-        <!-- Logo/Your name on the left - Edit "YOUR NAME" to your actual name -->
-        <div class="logo">Will.B.Framed</div>
+        <!-- Logo/Your name on the left -->
+        <div class="logo">
+            <!-- Your logo image - make sure logo.png is in the images folder -->
+            <img src="LandingPageImages/Logo.png" alt="Logo">
+            <!-- Optional: Remove the text below if you only want the logo image -->
+            <!-- Or keep both for "logo + name" combination -->
+            <span>WILL BOWRAN</span>
+        </div>
         <!-- Navigation links on the right - Each href="#section" links to an id on the page -->
         <ul class="nav-links">
             <li><a href="#home">HOME</a></li>
@@ -359,20 +381,20 @@
             <!-- Each gallery-item is a clickable card -->
             <!-- onclick="alert(...)" is a placeholder - replace with actual links to gallery pages -->
             
-            <!-- RUNNING GALLERY CARD -->
-            <div class="gallery-item" onclick="alert('Link to Running gallery')">
+            <!-- HIGHLIGHTS GALLERY CARD -->
+            <div class="gallery-item" onclick="alert('Link to Highlights gallery')">
                 <!-- Replace this image URL with your own photo -->
-                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800" alt="Running">
+                <img src="LandingPageImages/Sprints.jpg" alt="Highlights">
                 <!-- Text that slides up on hover -->
                 <div class="gallery-overlay">
-                    <h3>RUNNING</h3>
+                    <h3>HIGHLIGHTS</h3>
                     <p>View Collection</p>
                 </div>
             </div>
             
             <!-- RUNNING GALLERY CARD -->
             <div class="gallery-item" onclick="alert('Link to Running gallery')">
-                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800" alt="Running">
+                <img src="LandingPageImages/Finish.jpg" alt="Running">
                 <div class="gallery-overlay">
                     <h3>RUNNING</h3>
                     <p>View Collection</p>
@@ -381,7 +403,7 @@
             
             <!-- ... GALLERY CARD -->
             <div class="gallery-item" onclick="alert('Link to ... gallery')">
-                <img src="https://images.unsplash.com/photo-1514565131-fce0801e5785?w=800" alt="...">
+                <img src="LandingPageImages/Logo.png" alt="...">
                 <div class="gallery-overlay">
                     <h3>...</h3>
                     <p>View Collection</p>
@@ -390,7 +412,7 @@
             
             <!-- ... GALLERY CARD -->
             <div class="gallery-item" onclick="alert('Link to ... gallery')">
-                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800" alt="...">
+                <img src="LandingPageImages/Logo.png" alt="...">
                 <div class="gallery-overlay">
                     <h3>...</h3>
                     <p>View Collection</p>
@@ -399,7 +421,7 @@
             
             <!-- ... GALLERY CARD -->
             <div class="gallery-item" onclick="alert('Link to ... gallery')">
-                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800" alt="...">
+                <img src="LandingPageImages/Logo.png" alt="...">
                 <div class="gallery-overlay">
                     <h3>...</h3>
                     <p>View Collection</p>
@@ -408,7 +430,7 @@
             
             <!-- ... GALLERY CARD -->
             <div class="gallery-item" onclick="alert('Link to ... gallery')">
-                <img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=800" alt="...">
+                <img src="LandingPageImages/Logo.png" alt="...">
                 <div class="gallery-overlay">
                     <h3>...</h3>
                     <p>View Collection</p>
