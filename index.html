@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,195 +6,197 @@
     <!-- Makes the site responsive on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Title that appears in browser tab -->
-    <title>Will.B.Framed</title>
+    <title>Will.B.Framed - Sports Photography</title>
     
     <!-- FAVICON - Logo that appears in browser tab -->
-    <!-- Upload your logo.png to the images folder and this will display it -->
     <link rel="icon" type="image/png" href="LandingPageImages/Logo.png">
+    
+    <!-- SEO Meta Tags for better search engine visibility -->
+    <meta name="description" content="Will Bowran - Professional sports photography based in Hertfordshire. Specializing in running, athletics, and sports event photography.">
+    <meta name="keywords" content="sports photography, Will Bowran, athletics photographer, running photography, Hertfordshire photographer, sports events">
 
     <style>
         /* RESET STYLES - Removes default browser spacing and ensures consistent box sizing */
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box; /* Makes width/height include padding and borders */
+            box-sizing: border-box;
         }
 
         /* BODY STYLES - Overall page appearance */
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif; /* Modern, clean font */
-            background: #0a0a0a; /* Very dark background color (almost black) */
-            color: #fff; /* White text color */
-            overflow-x: hidden; /* Prevents horizontal scrolling */
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
         }
 
         /* NAVIGATION BAR STYLES */
         nav {
-            position: fixed; /* Stays at top when scrolling */
+            position: fixed;
             top: 0;
             width: 100%;
-            padding: 2rem 4rem; /* Spacing inside nav: 2rem top/bottom, 4rem left/right */
-            display: flex; /* Makes items align horizontally */
-            justify-content: space-between; /* Pushes logo left and links right */
-            align-items: center; /* Vertically centers items */
-            z-index: 1000; /* Ensures nav appears above other content */
-            background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%); /* Fades from dark to transparent */
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
         }
 
-	/* Logo/Name on the left side of navigation */
+        /* Logo/Name on the left side of navigation */
         .logo {
-            font-size: 1.rem;
-            font-weight: 300; /* Thin font weight */
-            letter-spacing: 3px; /* Space between letters for elegance */
-            display: flex; /* Allows logo image and text to align */
-            align-items: center; /* Centers logo vertically */
-            gap: 1rem; /* Space between logo image and text */
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
         /* Logo image styling */
         .logo img {
-            height: 120px; /* Adjust this number to make logo bigger/smaller */
-            width: auto; /* Maintains aspect ratio */
-           	 /*filter: brightness(0) invert(1); */	/* Makes logo white (remove this line if you want original colors) */
+            height: 120px;
+            width: auto;
         }
 
         /* Container for navigation links */
         .nav-links {
-            display: flex; /* Makes links align horizontally */
-            gap: 3rem; /* Space between each link */
-            list-style: none; /* Removes bullet points */
+            display: flex;
+            gap: 3rem;
+            list-style: none;
         }
 
         /* Individual navigation link styling */
         .nav-links a {
             color: #fff;
-            text-decoration: none; /* Removes underline */
+            text-decoration: none;
             font-size: 0.9rem;
             letter-spacing: 1px;
-            transition: opacity 0.3s; /* Smooth fade effect on hover */
+            transition: opacity 0.3s;
         }
 
         /* When hovering over navigation links */
         .nav-links a:hover {
-            opacity: 0.6; /* Makes link semi-transparent */
+            opacity: 0.6;
         }
 
         /* HERO SECTION - The main landing area users see first */
         .hero {
-            height: 100vh; /* Full viewport height (entire screen) */
+            height: 100vh;
             display: flex;
-            align-items: center; /* Centers content vertically */
-            justify-content: center; /* Centers content horizontally */
+            align-items: center;
+            justify-content: center;
             position: relative;
-            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%); /* Subtle dark gradient */
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
         }
 
         /* Container for hero text and button */
         .hero-content {
             text-align: center;
-            z-index: 2; /* Ensures content appears above background */
+            z-index: 2;
         }
 
         /* Main headline in hero section */
         .hero h1 {
-            font-size: 5rem; /* Large text size */
-            font-weight: 200; /* Very thin font weight */
-            letter-spacing: 8px; /* Wide letter spacing for dramatic effect */
+            font-size: 5rem;
+            font-weight: 200;
+            letter-spacing: 8px;
             margin-bottom: 1rem;
-            animation: fadeInUp 1s ease-out; /* Animates in from below */
+            animation: fadeInUp 1s ease-out;
         }
 
         /* Subtitle text in hero section */
         .hero p {
             font-size: 1.2rem;
             letter-spacing: 2px;
-            opacity: 0.7; /* Slightly transparent */
-            animation: fadeInUp 1s ease-out 0.3s both; /* Delayed animation */
+            opacity: 0.7;
+            animation: fadeInUp 1s ease-out 0.3s both;
         }
 
         /* Call-to-action button styling */
         .cta-button {
             margin-top: 3rem;
-            padding: 1rem 3rem; /* Space inside button */
-            background: transparent; /* See-through background */
-            border: 1px solid #fff; /* White outline */
+            padding: 1rem 3rem;
+            background: transparent;
+            border: 1px solid #fff;
             color: #fff;
             font-size: 0.9rem;
             letter-spacing: 2px;
-            cursor: pointer; /* Shows hand cursor on hover */
-            transition: all 0.3s; /* Smooth transition for all properties */
-            animation: fadeInUp 1s ease-out 0.6s both; /* Delayed animation */
+            cursor: pointer;
+            transition: all 0.3s;
+            animation: fadeInUp 1s ease-out 0.6s both;
         }
 
         /* Button hover effect */
         .cta-button:hover {
-            background: #fff; /* Fills with white */
-            color: #0a0a0a; /* Text turns dark */
+            background: #fff;
+            color: #0a0a0a;
         }
 
         /* GALLERY PREVIEW SECTION */
         .gallery-preview {
-            padding: 6rem 4rem; /* Large padding around gallery */
+            padding: 6rem 4rem;
             background: #0a0a0a;
         }
 
-        /* Section title styling (used for "PORTFOLIO", "ABOUT" titles) */
+        /* Section title styling */
         .section-title {
             text-align: center;
             font-size: 2.5rem;
             font-weight: 200;
             letter-spacing: 4px;
-            margin-bottom: 4rem; /* Space below title before content */
+            margin-bottom: 4rem;
         }
 
         /* Grid layout for gallery items */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Responsive: fits as many 350px+ columns as possible */
-            gap: 2rem; /* Space between grid items */
-            max-width: 1400px; /* Maximum width of grid */
-            margin: 0 auto; /* Centers the grid */
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         /* Individual gallery item container */
         .gallery-item {
-            position: relative; /* Allows absolute positioning of child elements */
+            position: relative;
             height: 400px;
-            overflow: hidden; /* Hides overflow when image zooms */
-            cursor: pointer; /* Shows hand cursor */
-            background: #1a1a1a; /* Fallback background color */
+            overflow: hidden;
+            cursor: pointer;
+            background: #1a1a1a;
         }
 
-        /* Colored overlay that appears on hover - created with ::before pseudo-element */
+        /* Colored overlay that appears on hover */
         .gallery-item::before {
-            content: ''; /* Required for pseudo-element to display */
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%); /* Purple gradient */
-            opacity: 0; /* Hidden by default */
-            transition: opacity 0.5s; /* Smooth fade in/out */
-            z-index: 1; /* Appears above image but below text */
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            z-index: 1;
         }
 
         /* Shows colored overlay when hovering over gallery item */
         .gallery-item:hover::before {
-            opacity: 0.3; /* Makes overlay semi-transparent */
+            opacity: 0.3;
         }
 
         /* Gallery item image styling */
         .gallery-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Crops image to fill container while maintaining aspect ratio */
-            transition: transform 0.5s; /* Smooth zoom effect */
+            object-fit: cover;
+            transition: transform 0.5s;
         }
 
         /* Zoom effect when hovering over gallery item */
         .gallery-item:hover img {
-            transform: scale(1.1); /* Enlarges image by 10% */
+            transform: scale(1.1);
         }
 
         /* Text overlay at bottom of gallery items */
@@ -205,15 +206,15 @@
             left: 0;
             right: 0;
             padding: 2rem;
-            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.9) 100%); /* Fades from transparent to dark */
-            transform: translateY(100%); /* Hides overlay below item by default */
-            transition: transform 0.3s; /* Smooth slide up effect */
-            z-index: 2; /* Appears above image and colored overlay */
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.9) 100%);
+            transform: translateY(100%);
+            transition: transform 0.3s;
+            z-index: 2;
         }
 
         /* Slides overlay up when hovering over gallery item */
         .gallery-item:hover .gallery-overlay {
-            transform: translateY(0); /* Moves to normal position */
+            transform: translateY(0);
         }
 
         /* Gallery overlay title styling */
@@ -230,40 +231,165 @@
             opacity: 0.7;
         }
 
+        /* SERVICES SECTION - What you offer to clients */
+        .services {
+            padding: 6rem 4rem;
+            background: #0f0f0f;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+
         /* ABOUT SECTION */
         .about {
             padding: 6rem 4rem;
-            background: #0f0f0f; /* Slightly different shade than other sections */
+            background: #0a0a0a;
         }
 
-        /* Container for about content - keeps text from getting too wide */
+        /* Container for about content */
         .about-content {
-            max-width: 800px; /* Limits width for better readability */
-            margin: 0 auto; /* Centers the content */
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
         }
 
         /* About section paragraph styling */
         .about-content p {
             font-size: 1.1rem;
-            line-height: 2; /* Double spacing between lines for readability */
-            opacity: 0.8; /* Slightly transparent */
+            line-height: 2;
+            opacity: 0.8;
             letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+
+        /* CONTACT FORM SECTION */
+        .contact {
+            padding: 6rem 4rem;
+            background: #0f0f0f;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-intro {
+            text-align: center;
+            opacity: 0.8;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        /* Form styling */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            padding: 1rem 3rem;
+            background: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+            align-self: center;
+        }
+
+        .submit-button:hover {
+            background: #fff;
+            color: #0a0a0a;
         }
 
         /* FOOTER SECTION */
         footer {
             padding: 3rem 4rem;
             text-align: center;
-            background: #000; /* Pure black background */
-            border-top: 1px solid #1a1a1a; /* Subtle top border */
+            background: #000;
+            border-top: 1px solid #1a1a1a;
         }
 
         /* Container for social media links */
         .social-links {
             display: flex;
-            justify-content: center; /* Centers links horizontally */
-            gap: 2rem; /* Space between links */
+            justify-content: center;
+            gap: 2rem;
             margin-bottom: 2rem;
         }
 
@@ -283,60 +409,105 @@
 
         /* Copyright text in footer */
         footer p {
-            opacity: 0.5; /* More transparent for subtle appearance */
+            opacity: 0.5;
             font-size: 0.8rem;
             letter-spacing: 1px;
         }
 
-        /* ANIMATION - Defines the fade in and slide up effect used throughout */
+        /* LIGHTBOX for viewing images full screen */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 3rem;
+            color: #fff;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .lightbox-close:hover {
+            opacity: 0.6;
+        }
+
+        /* ANIMATION - Defines the fade in and slide up effect */
         @keyframes fadeInUp {
             from {
-                opacity: 0; /* Starts invisible */
-                transform: translateY(30px); /* Starts 30px lower */
+                opacity: 0;
+                transform: translateY(30px);
             }
             to {
-                opacity: 1; /* Ends fully visible */
-                transform: translateY(0); /* Ends at normal position */
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        /* MOBILE RESPONSIVE STYLES - Adjusts layout for smaller screens */
-        @media (max-width: 768px) { /* Applies when screen is 768px or narrower */
-            /* Reduces navigation padding on mobile */
+        /* MOBILE RESPONSIVE STYLES */
+        @media (max-width: 768px) {
             nav {
                 padding: 1.5rem 2rem;
             }
 
-            /* Reduces space between navigation links */
             .nav-links {
                 gap: 1.5rem;
+                font-size: 0.8rem;
             }
 
-            /* Makes hero headline smaller on mobile */
             .hero h1 {
                 font-size: 2.5rem;
                 letter-spacing: 4px;
             }
 
-            /* Makes hero subtitle smaller on mobile */
             .hero p {
                 font-size: 1rem;
             }
 
-            /* Reduces padding in gallery and about sections on mobile */
-            .gallery-preview, .about {
+            .logo {
+                font-size: 0.8rem;
+            }
+
+            .logo img {
+                height: 80px;
+            }
+
+            .gallery-preview, .about, .services, .contact {
                 padding: 4rem 2rem;
             }
 
-            /* Makes gallery single column on mobile */
             .gallery-grid {
-                grid-template-columns: 1fr; /* One column only */
+                grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
 
-            /* Makes section titles smaller on mobile */
             .section-title {
                 font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
         }
     </style>
@@ -346,29 +517,28 @@
     <nav>
         <!-- Logo/Your name on the left -->
         <div class="logo">
-            <!-- Your logo image - make sure logo.png is in the images folder -->
-            <img src="LandingPageImages/Logo.png" alt="Logo">
-            <!-- Optional: Remove the text below if you only want the logo image -->
-            <!-- Or keep both for "logo + name" combination -->
+            <!-- Your logo image -->
+            <img src="LandingPageImages/Logo.png" alt="Will.B.Framed Logo">
+            <!-- Name next to logo -->
             <span>WILL BOWRAN</span>
         </div>
         <!-- Navigation links on the right - Each href="#section" links to an id on the page -->
         <ul class="nav-links">
             <li><a href="#home">HOME</a></li>
             <li><a href="#portfolio">PORTFOLIO</a></li>
+            <li><a href="#services">SERVICES</a></li>
             <li><a href="#about">ABOUT</a></li>
             <li><a href="#contact">CONTACT</a></li>
         </ul>
     </nav>
 
     <!-- HERO SECTION - First thing visitors see -->
-    <!-- id="home" allows navigation to jump here -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <!-- Main headline - Edit to your preference -->
-            <h1>PHOTOGRAPHY</h1>
-            <!-- Subtitle - Customize this text -->
-            <p>CAPTURING MOMENTS IN TIME</p>
+            <!-- Main headline -->
+            <h1>SPORTS PHOTOGRAPHY</h1>
+            <!-- Subtitle -->
+            <p>CAPTURING THE PASSION & ENERGY OF ATHLETICS</p>
             <!-- Button that scrolls to portfolio when clicked -->
             <button class="cta-button" onclick="document.getElementById('portfolio').scrollIntoView({behavior: 'smooth'})">VIEW WORK</button>
         </div>
@@ -378,14 +548,11 @@
     <section class="gallery-preview" id="portfolio">
         <h2 class="section-title">PORTFOLIO</h2>
         <div class="gallery-grid">
-            <!-- Each gallery-item is a clickable card -->
-            <!-- onclick="alert(...)" is a placeholder - replace with actual links to gallery pages -->
             
             <!-- HIGHLIGHTS GALLERY CARD -->
-            <div class="gallery-item" onclick="alert('Link to Highlights gallery')">
-                <!-- Replace this image URL with your own photo -->
+            <!-- Replace onclick with actual page link when ready: onclick="window.location.href='highlights.html'" -->
+            <div class="gallery-item" onclick="alert('Link to Highlights gallery - Create highlights.html to link here')">
                 <img src="LandingPageImages/Sprints.jpg" alt="Highlights">
-                <!-- Text that slides up on hover -->
                 <div class="gallery-overlay">
                     <h3>HIGHLIGHTS</h3>
                     <p>View Collection</p>
@@ -393,7 +560,7 @@
             </div>
             
             <!-- RUNNING GALLERY CARD -->
-            <div class="gallery-item" onclick="alert('Link to Running gallery')">
+            <div class="gallery-item" onclick="alert('Link to Running gallery - Create running.html to link here')">
                 <img src="LandingPageImages/Finish.jpg" alt="Running">
                 <div class="gallery-overlay">
                     <h3>RUNNING</h3>
@@ -401,41 +568,83 @@
                 </div>
             </div>
             
-            <!-- ... GALLERY CARD -->
-            <div class="gallery-item" onclick="alert('Link to ... gallery')">
-                <img src="LandingPageImages/Logo.png" alt="...">
+            <!-- PLACEHOLDER GALLERY CARDS - Replace these with your actual categories -->
+            <!-- Update the image src, alt text, title, and onclick link -->
+            <div class="gallery-item" onclick="alert('Add your third gallery category here')">
+                <img src="LandingPageImages/Logo.png" alt="Coming Soon">
                 <div class="gallery-overlay">
-                    <h3>...</h3>
-                    <p>View Collection</p>
+                    <h3>ATHLETICS</h3>
+                    <p>Coming Soon</p>
                 </div>
             </div>
             
-            <!-- ... GALLERY CARD -->
-            <div class="gallery-item" onclick="alert('Link to ... gallery')">
-                <img src="LandingPageImages/Logo.png" alt="...">
+            <div class="gallery-item" onclick="alert('Add your fourth gallery category here')">
+                <img src="LandingPageImages/Logo.png" alt="Coming Soon">
                 <div class="gallery-overlay">
-                    <h3>...</h3>
-                    <p>View Collection</p>
+                    <h3>EVENTS</h3>
+                    <p>Coming Soon</p>
                 </div>
             </div>
             
-            <!-- ... GALLERY CARD -->
-            <div class="gallery-item" onclick="alert('Link to ... gallery')">
-                <img src="LandingPageImages/Logo.png" alt="...">
+            <div class="gallery-item" onclick="alert('Add your fifth gallery category here')">
+                <img src="LandingPageImages/Logo.png" alt="Coming Soon">
                 <div class="gallery-overlay">
-                    <h3>...</h3>
-                    <p>View Collection</p>
+                    <h3>CROSS COUNTRY</h3>
+                    <p>Coming Soon</p>
                 </div>
             </div>
             
-            <!-- ... GALLERY CARD -->
-            <div class="gallery-item" onclick="alert('Link to ... gallery')">
-                <img src="LandingPageImages/Logo.png" alt="...">
+            <div class="gallery-item" onclick="alert('Add your sixth gallery category here')">
+                <img src="LandingPageImages/Logo.png" alt="Coming Soon">
                 <div class="gallery-overlay">
-                    <h3>...</h3>
-                    <p>View Collection</p>
+                    <h3>TRACK & FIELD</h3>
+                    <p>Coming Soon</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION - What you offer -->
+    <section class="services" id="services">
+        <h2 class="section-title">SERVICES</h2>
+        <div class="services-grid">
+            
+            <div class="service-card">
+                <div class="service-icon">📸</div>
+                <h3>EVENT COVERAGE</h3>
+                <p>Comprehensive photography coverage for races, meets, and competitions with fast delivery of high-quality images.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🏃</div>
+                <h3>ACTION SHOTS</h3>
+                <p>Dynamic action photography capturing athletes at peak performance with professional editing and enhancement.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">💼</div>
+                <h3>TEAM PACKAGES</h3>
+                <p>Custom photography packages for clubs, teams, and organizations including group shots and individual portraits.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🖼️</div>
+                <h3>PRINTS & PRODUCTS</h3>
+                <p>High-quality prints, canvases, and photo products available to commemorate your athletic achievements.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3>QUICK TURNAROUND</h3>
+                <p>Fast processing and delivery so athletes can share their moments while memories are still fresh.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>DIGITAL DELIVERY</h3>
+                <p>Easy online gallery access with options to download, share, and order prints directly from your device.</p>
+            </div>
+
         </div>
     </section>
 
@@ -443,68 +652,175 @@
     <section class="about" id="about">
         <h2 class="section-title">ABOUT</h2>
         <div class="about-content">
-            <!-- Edit this paragraph with your own bio -->
             <p>
-                I'm a photographer based in Hertfordshire, specializing in sports. 
-                With a passion for capturing authentic moments and creating timeless imagery, 
-                I work with clients to bring their vision to life. Each project is an opportunity 
-                to get creative and tell a unique story through the lens.
+                I'm a sports photographer based in Hertfordshire, specializing in capturing the raw 
+                energy and determination of athletic competition. Whether it's the intensity of a sprint 
+                finish, the grit of a cross country race, or the precision of track and field events, 
+                I'm there to freeze those defining moments in time.
+            </p>
+            <p>
+                With a passion for both sports and photography, I understand what makes a great action 
+                shot. I work with athletes, teams, and event organizers to provide professional-quality 
+                images that celebrate achievement and tell the story of each competition. Every race, 
+                every jump, every finish line is an opportunity to create something memorable.
             </p>
         </div>
     </section>
 
-    <!-- FOOTER - Contact info and social links -->
-    <footer id="contact">
-        <div class="social-links">
-            <!-- Replace "#" with your actual social media URLs -->
-            <a href="https://www.instagram.com/will.b.framed/?hl=en">INSTAGRAM</a>
-            <a href="mailto:will.b.framed@gmail.com">EMAIL</a>
-            <a href="https://www.flickr.com/photos/157795408@N03/albums">FLICKR</a>
+    <!-- CONTACT SECTION -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">GET IN TOUCH</h2>
+        <div class="contact-container">
+            <p class="contact-intro">
+                Interested in booking event coverage or have questions about my services? 
+                Fill out the form below and I'll get back to you within 24 hours. 
+                Let's capture something special together.
+            </p>
+            
+            <!-- CONTACT FORM -->
+            <!-- IMPORTANT: This form needs a backend service to actually send emails -->
+            <!-- Options: Formspree.io (easiest), EmailJS, or Netlify Forms -->
+            <!-- For now, it shows an alert. See integration instructions below. -->
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                
+                <div class="form-group">
+                    <label for="name">NAME *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">EMAIL *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="event">EVENT/OCCASION</label>
+                    <input type="text" id="event" name="event" placeholder="e.g., County Championships, Park Run, School Sports Day">
+                </div>
+
+                <div class="form-group">
+                    <label for="date">EVENT DATE</label>
+                    <input type="date" id="date" name="date">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">MESSAGE *</label>
+                    <textarea id="message" name="message" required placeholder="Tell me about your event or photography needs..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">SEND MESSAGE</button>
+            </form>
+
+            <!-- EMAIL INTEGRATION INSTRUCTIONS:
+            
+            To make this form actually send emails, use one of these services:
+            
+            1. FORMSPREE (Recommended - Easiest):
+               - Sign up at formspree.io (free tier available)
+               - Create a form and get your endpoint
+               - Replace the form tag with:
+                 <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
+               - Remove the onsubmit attribute
+            
+            2. EMAILJS:
+               - Sign up at emailjs.com
+               - Add their JavaScript library
+               - Configure email template
+               - Update handleSubmit function with EmailJS code
+            
+            3. NETLIFY FORMS (if hosting on Netlify):
+               - Add attribute: data-netlify="true" to form tag
+               - Add hidden input: <input type="hidden" name="form-name" value="contact">
+            -->
         </div>
-        <!-- Copyright text - update year and name -->
+    </section>
+
+    <!-- FOOTER - Contact info and social links -->
+    <footer>
+        <div class="social-links">
+            <a href="https://www.instagram.com/will.b.framed/?hl=en" target="_blank">INSTAGRAM</a>
+            <a href="mailto:will.b.framed@gmail.com">EMAIL</a>
+            <a href="https://www.flickr.com/photos/157795408@N03/albums" target="_blank">FLICKR</a>
+        </div>
         <p>© 2025 WILL BOWRAN. ALL RIGHTS RESERVED.</p>
     </footer>
+
+    <!-- LIGHTBOX for viewing images (ready for gallery pages) -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="">
+    </div>
 
     <script>
         // JAVASCRIPT CODE - Adds interactive functionality
 
         // SMOOTH SCROLLING FOR NAVIGATION LINKS
-        // When you click a navigation link, the page smoothly scrolls to that section
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault(); // Prevents default jump behavior
-                const target = document.querySelector(this.getAttribute('href')); // Finds the section to scroll to
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' }); // Smoothly scrolls to section
+                    target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
 
         // NAVIGATION BAR SCROLL EFFECT
-        // Changes navigation background when you scroll down the page
-        let lastScroll = 0; // Tracks previous scroll position
-        const nav = document.querySelector('nav'); // Selects the navigation bar
+        let lastScroll = 0;
+        const nav = document.querySelector('nav');
         
-        // Runs every time the user scrolls
         window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset; // Gets current scroll position
+            const currentScroll = window.pageYOffset;
             
-            // If scrolled more than 100px down
             if (currentScroll > 100) {
-                // Makes navigation background solid dark with blur effect
                 nav.style.background = 'rgba(0, 0, 0, 0.95)';
                 nav.style.backdropFilter = 'blur(10px)';
             } else {
-                // Returns to transparent gradient at top of page
                 nav.style.background = 'linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%)';
                 nav.style.backdropFilter = 'none';
             }
             
-            lastScroll = currentScroll; // Updates scroll position for next check
+            lastScroll = currentScroll;
+        });
+
+        // CONTACT FORM SUBMISSION HANDLER
+        // This is a placeholder - integrate with Formspree, EmailJS, or Netlify Forms
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Temporary alert - replace with actual email service
+            alert(`Thank you for your inquiry, ${data.name}!\n\nI'll get back to you at ${data.email} within 24 hours.\n\nTo enable real email sending, see the integration instructions in the HTML comments.`);
+            
+            // Reset form
+            event.target.reset();
+            
+            /* TO ENABLE REAL EMAIL SENDING:
+               See the comments in the HTML above the form for integration instructions
+               with Formspree, EmailJS, or Netlify Forms */
+        }
+
+        // LIGHTBOX FUNCTIONS (for future gallery pages)
+        function openLightbox(imageSrc) {
+            document.getElementById('lightbox').classList.add('active');
+            document.getElementById('lightbox-img').src = imageSrc;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
         });
     </script>
 </body>
 </html>
-
-
-
