@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Character encoding for proper text display -->
+    <meta charset="UTF-8">
+    <!-- Makes the site responsive on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title that appears in browser tab - CUSTOMIZE THIS -->
+    <title>Gallery Name - Will.B.Framed</title>
+    
+    <!-- FAVICON - Logo that appears in browser tab -->
+    <link rel="icon" type="image/png" href="LandingPageImages/Logo.png">
+    
+    <!-- SEO Meta Tags - CUSTOMIZE THESE -->
+    <meta name="description" content="Gallery description - professional sports photography by Will Bowran">
+    <meta name="keywords" content="sports photography, gallery name, Will Bowran">
+
+    <style>
+        /* RESET STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* BODY STYLES */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* NAVIGATION BAR - Same as landing page */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        /* Back button styling */
+        .back-button {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            padding: 0.8rem 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+        }
+
+        .back-button:hover {
+            background: #fff;
+            color: #0a0a0a;
+            border-color: #fff;
+        }
+
+        /* GALLERY HEADER SECTION */
+        .gallery-header {
+            padding: 10rem 4rem 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+        }
+
+        .gallery-title {
+            font-size: 3.5rem;
+            font-weight: 200;
+            letter-spacing: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-description {
+            font-size: 1.1rem;
+            opacity: 0.7;
+            letter-spacing: 1px;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* FILTER/CATEGORY BUTTONS (Optional - uncomment if needed) */
+        .filter-section {
+            padding: 2rem 4rem;
+            background: #0f0f0f;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-button {
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-button:hover,
+        .filter-button.active {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* GALLERY GRID */
+        .gallery-container {
+            padding: 4rem 4rem 6rem;
+            background: #0a0a0a;
+        }
+
+        /* Masonry-style grid layout for varied image sizes */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* Individual photo item */
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            background: #1a1a1a;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Photo image styling */
+        .photo-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Photo overlay with info (appears on hover) */
+        .photo-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.9) 100%);
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .photo-item:hover .photo-info {
+            transform: translateY(0);
+        }
+
+        .photo-caption {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.3rem;
+        }
+
+        .photo-date {
+            font-size: 0.75rem;
+            opacity: 0.6;
+            letter-spacing: 1px;
+        }
+
+        /* LIGHTBOX - Full screen image viewer */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.97);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 95%;
+            max-height: 95%;
+        }
+
+        .lightbox img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        /* Lightbox controls */
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 3rem;
+            color: #fff;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            z-index: 2001;
+        }
+
+        .lightbox-close:hover {
+            opacity: 0.6;
+        }
+
+        /* Navigation arrows in lightbox */
+        .lightbox-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 3rem;
+            color: #fff;
+            cursor: pointer;
+            padding: 1rem;
+            transition: opacity 0.3s;
+            user-select: none;
+        }
+
+        .lightbox-arrow:hover {
+            opacity: 0.6;
+        }
+
+        .lightbox-prev {
+            left: 2rem;
+        }
+
+        .lightbox-next {
+            right: 2rem;
+        }
+
+        /* Image caption in lightbox */
+        .lightbox-caption {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* LOAD MORE BUTTON (Optional) */
+        .load-more-container {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .load-more-button {
+            padding: 1rem 3rem;
+            background: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .load-more-button:hover {
+            background: #fff;
+            color: #0a0a0a;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 3rem 4rem;
+            text-align: center;
+            background: #000;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: opacity 0.3s;
+        }
+
+        .social-links a:hover {
+            opacity: 0.6;
+        }
+
+        footer p {
+            opacity: 0.5;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .logo img {
+                height: 60px;
+            }
+
+            .gallery-header {
+                padding: 8rem 2rem 3rem;
+            }
+
+            .gallery-title {
+                font-size: 2rem;
+                letter-spacing: 3px;
+            }
+
+            .gallery-description {
+                font-size: 1rem;
+            }
+
+            .filter-section {
+                padding: 1.5rem 2rem;
+            }
+
+            .gallery-container {
+                padding: 3rem 2rem;
+            }
+
+            .photo-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .lightbox-arrow {
+                font-size: 2rem;
+                padding: 0.5rem;
+            }
+
+            .lightbox-prev {
+                left: 0.5rem;
+            }
+
+            .lightbox-next {
+                right: 0.5rem;
+            }
+
+            .lightbox-close {
+                top: 1rem;
+                right: 1rem;
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION BAR -->
+    <nav>
+        <div class="logo">
+            <img src="LandingPageImages/Logo.png" alt="Will.B.Framed Logo">
+            <span>WILL BOWRAN</span>
+        </div>
+        <!-- Back button to return to main portfolio -->
+        <a href="index.html" class="back-button">← BACK TO PORTFOLIO</a>
+    </nav>
+
+    <!-- GALLERY HEADER -->
+    <section class="gallery-header">
+        <!-- CUSTOMIZE: Change this to your gallery name -->
+        <h1 class="gallery-title">GALLERY NAME</h1>
+        <!-- CUSTOMIZE: Add description of this gallery -->
+        <p class="gallery-description">
+            Description of this gallery collection. Share what makes this gallery special, 
+            the event or theme, and any relevant details about the photos.
+        </p>
+    </section>
+
+    <!-- OPTIONAL: FILTER BUTTONS -->
+    <!-- Uncomment this section if you want category filters within the gallery -->
+    <!--
+    <section class="filter-section">
+        <button class="filter-button active" onclick="filterGallery('all')">ALL</button>
+        <button class="filter-button" onclick="filterGallery('category1')">CATEGORY 1</button>
+        <button class="filter-button" onclick="filterGallery('category2')">CATEGORY 2</button>
+        <button class="filter-button" onclick="filterGallery('category3')">CATEGORY 3</button>
+    </section>
+    -->
+
+    <!-- PHOTO GALLERY GRID -->
+    <section class="gallery-container">
+        <div class="photo-grid" id="photoGrid">
+            
+            <!-- PHOTO ITEM TEMPLATE -->
+            <!-- Copy and paste this block for each photo in your gallery -->
+            <!-- CUSTOMIZE: Update src, alt, data-caption, and data-date -->
+            
+            <!-- Photo 1 -->
+            <div class="photo-item" onclick="openLightbox(0)">
+                <img src="LandingPageImages/Sprints.jpg" alt="Photo description" 
+                     data-caption="Caption for this photo" 
+                     data-date="Event Name - January 2025">
+                <div class="photo-info">
+                    <div class="photo-caption">Caption for this photo</div>
+                    <div class="photo-date">Event Name - January 2025</div>
+                </div>
+            </div>
+
+            <!-- Photo 2 -->
+            <div class="photo-item" onclick="openLightbox(1)">
+                <img src="LandingPageImages/Finish.jpg" alt="Photo description" 
+                     data-caption="Another great moment captured" 
+                     data-date="Event Name - January 2025">
+                <div class="photo-info">
+                    <div class="photo-caption">Another great moment captured</div>
+                    <div class="photo-date">Event Name - January 2025</div>
+                </div>
+            </div>
+
+            <!-- Photo 3 - ADD MORE PHOTOS BY COPYING THIS BLOCK -->
+            <div class="photo-item" onclick="openLightbox(2)">
+                <img src="LandingPageImages/Logo.png" alt="Photo description" 
+                     data-caption="Replace with your photo" 
+                     data-date="Event Name - January 2025">
+                <div class="photo-info">
+                    <div class="photo-caption">Replace with your photo</div>
+                    <div class="photo-date">Event Name - January 2025</div>
+                </div>
+            </div>
+
+            <!-- Photo 4 -->
+            <div class="photo-item" onclick="openLightbox(3)">
+                <img src="LandingPageImages/Logo.png" alt="Photo description" 
+                     data-caption="Replace with your photo" 
+                     data-date="Event Name - January 2025">
+                <div class="photo-info">
+                    <div class="photo-caption">Replace with your photo</div>
+                    <div class="photo-date">Event Name - January 2025</div>
+                </div>
+            </div>
+
+            <!-- Photo 5 -->
+            <div class="photo-item" onclick="openLightbox(4)">
+                <img src="LandingPageImages/Logo.png" alt="Photo description" 
+                     data-caption="Replace with your photo" 
+                     data-date="Event Name - January 2025">
+                <div class="photo-info">
+                    <div class="photo-caption">Replace with your photo</div>
+                    <div class="photo-date">Event Name - January 2025</div>
+                </div>
+            </div>
+
+            <!-- Photo 6 -->
+            <div class="photo-item" onclick="openLightbox(5)">
+                <img src="LandingPageImages/Logo.png" alt="Photo description" 
+                     data-caption="Replace with your photo" 
+                     data-date="Event Name - January 2025">
+                <div class="photo-info">
+                    <div class="photo-caption">Replace with your photo</div>
+                    <div class="photo-date">Event Name - January 2025</div>
+                </div>
+            </div>
+
+            <!-- ADD MORE PHOTOS HERE - Just copy the block above and update:
+                 1. openLightbox(X) - increment the number for each photo
+                 2. src="path/to/your/image.jpg"
+                 3. alt="description"
+                 4. data-caption="Your caption"
+                 5. data-date="Event name and date"
+                 6. Update the photo-info text to match
+            -->
+
+        </div>
+    </section>
+
+    <!-- OPTIONAL: LOAD MORE BUTTON -->
+    <!-- Uncomment if you want to load photos in batches -->
+    <!--
+    <div class="load-more-container">
+        <button class="load-more-button" onclick="loadMorePhotos()">LOAD MORE</button>
+    </div>
+    -->
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="social-links">
+            <a href="https://www.instagram.com/will.b.framed/?hl=en" target="_blank">INSTAGRAM</a>
+            <a href="mailto:will.b.framed@gmail.com">EMAIL</a>
+            <a href="https://www.flickr.com/photos/157795408@N03/albums" target="_blank">FLICKR</a>
+        </div>
+        <p>© 2025 WILL BOWRAN. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <!-- LIGHTBOX - Full screen image viewer -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <span class="lightbox-arrow lightbox-prev" onclick="changeImage(-1)">‹</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+        <span class="lightbox-arrow lightbox-next" onclick="changeImage(1)">›</span>
+    </div>
+
+    <script>
+        // LIGHTBOX FUNCTIONALITY
+        let currentImageIndex = 0;
+        let images = [];
+
+        // Initialize images array when page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            const photoItems = document.querySelectorAll('.photo-item img');
+            images = Array.from(photoItems).map(img => ({
+                src: img.src,
+                alt: img.alt,
+                caption: img.getAttribute('data-caption'),
+                date: img.getAttribute('data-date')
+            }));
+        });
+
+        // Opens lightbox with specific image
+        function openLightbox(index) {
+            currentImageIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            const caption = document.getElementById('lightbox-caption');
+            
+            img.src = images[index].src;
+            img.alt = images[index].alt;
+            caption.innerHTML = `${images[index].caption}<br><small>${images[index].date}</small>`;
+            
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when lightbox is open
+        }
+
+        // Closes lightbox
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+
+        // Changes to next or previous image in lightbox
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            
+            // Loop around if at start or end
+            if (currentImageIndex < 0) {
+                currentImageIndex = images.length - 1;
+            } else if (currentImageIndex >= images.length) {
+                currentImageIndex = 0;
+            }
+            
+            const img = document.getElementById('lightbox-img');
+            const caption = document.getElementById('lightbox-caption');
+            
+            img.src = images[currentImageIndex].src;
+            img.alt = images[currentImageIndex].alt;
+            caption.innerHTML = `${images[currentImageIndex].caption}<br><small>${images[currentImageIndex].date}</small>`;
+        }
+
+        // Keyboard controls for lightbox
+        document.addEventListener('keydown', (e) => {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowLeft') {
+                    changeImage(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeImage(1);
+                }
+            }
+        });
+
+        // Close lightbox when clicking outside the image
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') {
+                closeLightbox();
+            }
+        });
+
+        // OPTIONAL: FILTER FUNCTIONALITY
+        // Uncomment this if you're using the filter buttons
+        /*
+        function filterGallery(category) {
+            const photoItems = document.querySelectorAll('.photo-item');
+            const filterButtons = document.querySelectorAll('.filter-button');
+            
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter photos
+            photoItems.forEach(item => {
+                if (category === 'all') {
+                    item.style.display = 'block';
+                } else {
+                    // Add data-category="category-name" to photo-items to use this
+                    if (item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                }
+            });
+        }
+        */
+
+        // OPTIONAL: LOAD MORE FUNCTIONALITY
+        // Uncomment this if you're using the load more button
+        /*
+        let photosLoaded = 6; // Number of photos shown initially
+        const photosPerLoad = 6; // Number to load each time
+
+        function loadMorePhotos() {
+            const photoItems = document.querySelectorAll('.photo-item');
+            const totalPhotos = photoItems.length;
+            
+            // Show next batch of photos
+            for (let i = photosLoaded; i < photosLoaded + photosPerLoad && i < totalPhotos; i++) {
+                photoItems[i].style.display = 'block';
+            }
+            
+            photosLoaded += photosPerLoad;
+            
+            // Hide button if all photos are loaded
+            if (photosLoaded >= totalPhotos) {
+                document.querySelector('.load-more-button').style.display = 'none';
+            }
+        }
+
+        // Initially hide photos beyond the first batch
+        window.addEventListener('DOMContentLoaded', () => {
+            const photoItems = document.querySelectorAll('.photo-item');
+            photoItems.forEach((item, index) => {
+                if (index >= photosLoaded) {
+                    item.style.display = 'none';
+                }
+            });
+        });
+        */
+    </script>
+</body>
+</html>
