@@ -1,99 +1,485 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Will B Framed - Starter Website</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    /* Reset default body margin and set font */
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f6f8fa;
-      color: #222;
-    }
+    <!-- Character encoding for proper text display -->
+    <meta charset="UTF-8">
+    <!-- Makes the site responsive on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title that appears in browser tab -->
+    <title>Will.B.Framed</title>
+    <style>
+        /* RESET STYLES - Removes default browser spacing and ensures consistent box sizing */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* Makes width/height include padding and borders */
+        }
 
-    /* Banner styling: dark background, centered content */
-    .banner {
-      background: #222;
-      color: #fff;
-      padding: 0; /* Remove padding for image to fit flush */
-      text-align: center;
-      position: relative;
-    }
+        /* BODY STYLES - Overall page appearance */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif; /* Modern, clean font */
+            background: #0a0a0a; /* Very dark background color (almost black) */
+            color: #fff; /* White text color */
+            overflow-x: hidden; /* Prevents horizontal scrolling */
+        }
 
-    /* Banner image styling: full width, fixed height, object-fit for cropping */
-    .banner-img {
-      width: 100%;
-      max-height: 220px;
-      object-fit: cover; /* Ensures the image covers the area */
-      display: block;
-      margin: 0 auto;
-    }
+        /* NAVIGATION BAR STYLES */
+        nav {
+            position: fixed; /* Stays at top when scrolling */
+            top: 0;
+            width: 100%;
+            padding: 2rem 4rem; /* Spacing inside nav: 2rem top/bottom, 4rem left/right */
+            display: flex; /* Makes items align horizontally */
+            justify-content: space-between; /* Pushes logo left and links right */
+            align-items: center; /* Vertically centers items */
+            z-index: 1000; /* Ensures nav appears above other content */
+            background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%); /* Fades from dark to transparent */
+        }
 
-    /* Banner heading styling: overlays image, positioned absolutely */
-    .banner-title {
-      position: absolute;
-      top: 30px;
-      left: 0;
-      width: 100%;
-      color: #fff;
-      font-size: 2.5em;
-      letter-spacing: 2px;
-      text-shadow: 1px 2px 8px rgba(0,0,0,0.6); /* Adds shadow for readability on image */
-      pointer-events: none; /* Allows image to be clickable if needed */
-    }
+        /* Logo/Name on the left side of navigation */
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 300; /* Thin font weight */
+            letter-spacing: 3px; /* Space between letters for elegance */
+        }
 
-    /* Main content container styling */
-    .container {
-      max-width: 700px;
-      margin: 40px auto 0 auto;
-      padding: 20px;
-      background: #fff;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
-      border-radius: 8px;
-    }
+        /* Container for navigation links */
+        .nav-links {
+            display: flex; /* Makes links align horizontally */
+            gap: 3rem; /* Space between each link */
+            list-style: none; /* Removes bullet points */
+        }
 
-    /* Intro section styling */
-    .intro {
-      font-size: 1.2em;
-      margin: 20px 0 10px 0;
-    }
+        /* Individual navigation link styling */
+        .nav-links a {
+            color: #fff;
+            text-decoration: none; /* Removes underline */
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: opacity 0.3s; /* Smooth fade effect on hover */
+        }
 
-    /* Description section styling */
-    .description {
-      font-size: 1em;
-      color: #555;
-      margin-bottom: 0;
-    }
-  </style>
+        /* When hovering over navigation links */
+        .nav-links a:hover {
+            opacity: 0.6; /* Makes link semi-transparent */
+        }
+
+        /* HERO SECTION - The main landing area users see first */
+        .hero {
+            height: 100vh; /* Full viewport height (entire screen) */
+            display: flex;
+            align-items: center; /* Centers content vertically */
+            justify-content: center; /* Centers content horizontally */
+            position: relative;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%); /* Subtle dark gradient */
+        }
+
+        /* Container for hero text and button */
+        .hero-content {
+            text-align: center;
+            z-index: 2; /* Ensures content appears above background */
+        }
+
+        /* Main headline in hero section */
+        .hero h1 {
+            font-size: 5rem; /* Large text size */
+            font-weight: 200; /* Very thin font weight */
+            letter-spacing: 8px; /* Wide letter spacing for dramatic effect */
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out; /* Animates in from below */
+        }
+
+        /* Subtitle text in hero section */
+        .hero p {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            opacity: 0.7; /* Slightly transparent */
+            animation: fadeInUp 1s ease-out 0.3s both; /* Delayed animation */
+        }
+
+        /* Call-to-action button styling */
+        .cta-button {
+            margin-top: 3rem;
+            padding: 1rem 3rem; /* Space inside button */
+            background: transparent; /* See-through background */
+            border: 1px solid #fff; /* White outline */
+            color: #fff;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            cursor: pointer; /* Shows hand cursor on hover */
+            transition: all 0.3s; /* Smooth transition for all properties */
+            animation: fadeInUp 1s ease-out 0.6s both; /* Delayed animation */
+        }
+
+        /* Button hover effect */
+        .cta-button:hover {
+            background: #fff; /* Fills with white */
+            color: #0a0a0a; /* Text turns dark */
+        }
+
+        /* GALLERY PREVIEW SECTION */
+        .gallery-preview {
+            padding: 6rem 4rem; /* Large padding around gallery */
+            background: #0a0a0a;
+        }
+
+        /* Section title styling (used for "PORTFOLIO", "ABOUT" titles) */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 200;
+            letter-spacing: 4px;
+            margin-bottom: 4rem; /* Space below title before content */
+        }
+
+        /* Grid layout for gallery items */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Responsive: fits as many 350px+ columns as possible */
+            gap: 2rem; /* Space between grid items */
+            max-width: 1400px; /* Maximum width of grid */
+            margin: 0 auto; /* Centers the grid */
+        }
+
+        /* Individual gallery item container */
+        .gallery-item {
+            position: relative; /* Allows absolute positioning of child elements */
+            height: 400px;
+            overflow: hidden; /* Hides overflow when image zooms */
+            cursor: pointer; /* Shows hand cursor */
+            background: #1a1a1a; /* Fallback background color */
+        }
+
+        /* Colored overlay that appears on hover - created with ::before pseudo-element */
+        .gallery-item::before {
+            content: ''; /* Required for pseudo-element to display */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%); /* Purple gradient */
+            opacity: 0; /* Hidden by default */
+            transition: opacity 0.5s; /* Smooth fade in/out */
+            z-index: 1; /* Appears above image but below text */
+        }
+
+        /* Shows colored overlay when hovering over gallery item */
+        .gallery-item:hover::before {
+            opacity: 0.3; /* Makes overlay semi-transparent */
+        }
+
+        /* Gallery item image styling */
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Crops image to fill container while maintaining aspect ratio */
+            transition: transform 0.5s; /* Smooth zoom effect */
+        }
+
+        /* Zoom effect when hovering over gallery item */
+        .gallery-item:hover img {
+            transform: scale(1.1); /* Enlarges image by 10% */
+        }
+
+        /* Text overlay at bottom of gallery items */
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.9) 100%); /* Fades from transparent to dark */
+            transform: translateY(100%); /* Hides overlay below item by default */
+            transition: transform 0.3s; /* Smooth slide up effect */
+            z-index: 2; /* Appears above image and colored overlay */
+        }
+
+        /* Slides overlay up when hovering over gallery item */
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0); /* Moves to normal position */
+        }
+
+        /* Gallery overlay title styling */
+        .gallery-overlay h3 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Gallery overlay description text */
+        .gallery-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* ABOUT SECTION */
+        .about {
+            padding: 6rem 4rem;
+            background: #0f0f0f; /* Slightly different shade than other sections */
+        }
+
+        /* Container for about content - keeps text from getting too wide */
+        .about-content {
+            max-width: 800px; /* Limits width for better readability */
+            margin: 0 auto; /* Centers the content */
+            text-align: center;
+        }
+
+        /* About section paragraph styling */
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 2; /* Double spacing between lines for readability */
+            opacity: 0.8; /* Slightly transparent */
+            letter-spacing: 1px;
+        }
+
+        /* FOOTER SECTION */
+        footer {
+            padding: 3rem 4rem;
+            text-align: center;
+            background: #000; /* Pure black background */
+            border-top: 1px solid #1a1a1a; /* Subtle top border */
+        }
+
+        /* Container for social media links */
+        .social-links {
+            display: flex;
+            justify-content: center; /* Centers links horizontally */
+            gap: 2rem; /* Space between links */
+            margin-bottom: 2rem;
+        }
+
+        /* Individual social link styling */
+        .social-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: opacity 0.3s;
+        }
+
+        /* Social link hover effect */
+        .social-links a:hover {
+            opacity: 0.6;
+        }
+
+        /* Copyright text in footer */
+        footer p {
+            opacity: 0.5; /* More transparent for subtle appearance */
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        /* ANIMATION - Defines the fade in and slide up effect used throughout */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0; /* Starts invisible */
+                transform: translateY(30px); /* Starts 30px lower */
+            }
+            to {
+                opacity: 1; /* Ends fully visible */
+                transform: translateY(0); /* Ends at normal position */
+            }
+        }
+
+        /* MOBILE RESPONSIVE STYLES - Adjusts layout for smaller screens */
+        @media (max-width: 768px) { /* Applies when screen is 768px or narrower */
+            /* Reduces navigation padding on mobile */
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            /* Reduces space between navigation links */
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            /* Makes hero headline smaller on mobile */
+            .hero h1 {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
+            }
+
+            /* Makes hero subtitle smaller on mobile */
+            .hero p {
+                font-size: 1rem;
+            }
+
+            /* Reduces padding in gallery and about sections on mobile */
+            .gallery-preview, .about {
+                padding: 4rem 2rem;
+            }
+
+            /* Makes gallery single column on mobile */
+            .gallery-grid {
+                grid-template-columns: 1fr; /* One column only */
+                gap: 1.5rem;
+            }
+
+            /* Makes section titles smaller on mobile */
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Banner at the top of the page -->
-  <div class="banner">
-    <!-- 
-      To display your banner image:
-      - Upload an image named 'banner.jpg', 'banner.png', or similar to the same folder as this HTML file.
-      - Change the src below to match the file name you uploaded.
-      - Example: <img src="banner.jpg" alt="Banner" class="banner-img">
-    -->
-    <img src="banner.jpg" alt="Banner" class="banner-img">
-    <!-- Banner title overlays the banner image -->
-    <div class="banner-title">Welcome to Will B Framed!</div>
-  </div>
+    <!-- NAVIGATION BAR - Fixed at top of page -->
+    <nav>
+        <!-- Logo/Your name on the left - Edit "YOUR NAME" to your actual name -->
+        <div class="logo">Will.B.Framed</div>
+        <!-- Navigation links on the right - Each href="#section" links to an id on the page -->
+        <ul class="nav-links">
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#portfolio">PORTFOLIO</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
 
-  <!-- Main site content -->
-  <div class="container">
-    <!-- Intro section -->
-    <div class="intro">
-      Hi there! This is a simple starter website to help you get going.
-    </div>
-    <!-- Description section -->
-    <div class="description">
-      This site includes a clean banner at the top, a short introduction, and a brief description.<br>
-      You can expand on this by adding more sections, customizing the colors, fonts, and layout, or adding images and interactive elements.<br><br>
-      Enjoy building your project!
-    </div>
-  </div>
+    <!-- HERO SECTION - First thing visitors see -->
+    <!-- id="home" allows navigation to jump here -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <!-- Main headline - Edit to your preference -->
+            <h1>PHOTOGRAPHY</h1>
+            <!-- Subtitle - Customize this text -->
+            <p>CAPTURING MOMENTS IN TIME</p>
+            <!-- Button that scrolls to portfolio when clicked -->
+            <button class="cta-button" onclick="document.getElementById('portfolio').scrollIntoView({behavior: 'smooth'})">VIEW WORK</button>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION - Shows gallery categories -->
+    <section class="gallery-preview" id="portfolio">
+        <h2 class="section-title">PORTFOLIO</h2>
+        <div class="gallery-grid">
+            <!-- Each gallery-item is a clickable card -->
+            <!-- onclick="alert(...)" is a placeholder - replace with actual links to gallery pages -->
+            
+            <!-- RUNNING GALLERY CARD -->
+            <div class="gallery-item" onclick="alert('Link to Running gallery')">
+                <!-- Replace this image URL with your own photo -->
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800" alt="Running">
+                <!-- Text that slides up on hover -->
+                <div class="gallery-overlay">
+                    <h3>RUNNING</h3>
+                    <p>View Collection</p>
+                </div>
+            </div>
+            
+            <!-- RUNNING GALLERY CARD -->
+            <div class="gallery-item" onclick="alert('Link to Running gallery')">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800" alt="Running">
+                <div class="gallery-overlay">
+                    <h3>RUNNING</h3>
+                    <p>View Collection</p>
+                </div>
+            </div>
+            
+            <!-- ... GALLERY CARD -->
+            <div class="gallery-item" onclick="alert('Link to ... gallery')">
+                <img src="https://images.unsplash.com/photo-1514565131-fce0801e5785?w=800" alt="...">
+                <div class="gallery-overlay">
+                    <h3>...</h3>
+                    <p>View Collection</p>
+                </div>
+            </div>
+            
+            <!-- ... GALLERY CARD -->
+            <div class="gallery-item" onclick="alert('Link to ... gallery')">
+                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800" alt="...">
+                <div class="gallery-overlay">
+                    <h3>...</h3>
+                    <p>View Collection</p>
+                </div>
+            </div>
+            
+            <!-- ... GALLERY CARD -->
+            <div class="gallery-item" onclick="alert('Link to ... gallery')">
+                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800" alt="...">
+                <div class="gallery-overlay">
+                    <h3>...</h3>
+                    <p>View Collection</p>
+                </div>
+            </div>
+            
+            <!-- ... GALLERY CARD -->
+            <div class="gallery-item" onclick="alert('Link to ... gallery')">
+                <img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=800" alt="...">
+                <div class="gallery-overlay">
+                    <h3>...</h3>
+                    <p>View Collection</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION - Your bio and background -->
+    <section class="about" id="about">
+        <h2 class="section-title">ABOUT</h2>
+        <div class="about-content">
+            <!-- Edit this paragraph with your own bio -->
+            <p>
+                I'm a photographer based in Hertfordshire, specializing in sports. 
+                With a passion for capturing authentic moments and creating timeless imagery, 
+                I work with clients to bring their vision to life. Each project is an opportunity 
+                to get creative and tell a unique story through the lens.
+            </p>
+        </div>
+    </section>
+
+    <!-- FOOTER - Contact info and social links -->
+    <footer id="contact">
+        <div class="social-links">
+            <!-- Replace "#" with your actual social media URLs -->
+            <a href="https://www.instagram.com/will.b.framed/?hl=en">INSTAGRAM</a>
+            <a href="mailto:will.b.framed@gmail.com">EMAIL</a>
+            <a href="https://www.flickr.com/photos/157795408@N03/albums">FLICKR</a>
+        </div>
+        <!-- Copyright text - update year and name -->
+        <p>© 2025 WILL BOWRAN. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script>
+        // JAVASCRIPT CODE - Adds interactive functionality
+
+        // SMOOTH SCROLLING FOR NAVIGATION LINKS
+        // When you click a navigation link, the page smoothly scrolls to that section
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // Prevents default jump behavior
+                const target = document.querySelector(this.getAttribute('href')); // Finds the section to scroll to
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' }); // Smoothly scrolls to section
+                }
+            });
+        });
+
+        // NAVIGATION BAR SCROLL EFFECT
+        // Changes navigation background when you scroll down the page
+        let lastScroll = 0; // Tracks previous scroll position
+        const nav = document.querySelector('nav'); // Selects the navigation bar
+        
+        // Runs every time the user scrolls
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset; // Gets current scroll position
+            
+            // If scrolled more than 100px down
+            if (currentScroll > 100) {
+                // Makes navigation background solid dark with blur effect
+                nav.style.background = 'rgba(0, 0, 0, 0.95)';
+                nav.style.backdropFilter = 'blur(10px)';
+            } else {
+                // Returns to transparent gradient at top of page
+                nav.style.background = 'linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%)';
+                nav.style.backdropFilter = 'none';
+            }
+            
+            lastScroll = currentScroll; // Updates scroll position for next check
+        });
+    </script>
 </body>
 </html>
